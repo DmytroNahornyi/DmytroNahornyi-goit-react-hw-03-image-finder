@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem";
-import Modal from "../Modal/Modal";
-import { ImageGalleryStyle } from "./ImageGallery.styled";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
+import Modal from '../Modal/Modal';
+import { ImageGalleryStyle } from './ImageGallery.styled';
 
 class ImageGallery extends Component {
   static propTypes = {
@@ -19,12 +19,12 @@ class ImageGallery extends Component {
     selectedImage: null,
   };
 
-  handleImageClick = (image) => {
+  handleImageClick = image => {
     this.setState({ selectedImage: image });
   };
 
-  handleKeyDown = (e) => {
-    if (e.code === "Escape") {
+  handleKeyDown = e => {
+    if (e.code === 'Escape') {
       this.setState({ selectedImage: null });
     }
   };
@@ -32,6 +32,10 @@ class ImageGallery extends Component {
   render() {
     const { images } = this.props;
     const { selectedImage } = this.state;
+
+    if (images.length === 0) {
+      return null;
+    }
 
     return (
       <ImageGalleryStyle
